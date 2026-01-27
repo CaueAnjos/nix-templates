@@ -3,7 +3,11 @@
 
   outputs = {self, ...}: {
     templates = {
-      default = self.templates.minimal;
+      default = self.templates.trivial;
+      trivial = {
+        path = ./templates/trivial;
+        description = "Trivial template";
+      };
       minimal = {
         path = ./templates/minimal;
         description = "Minimal template";
