@@ -4,6 +4,7 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/25.11";
+    systems.url = "github:nix-systems/default";
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -12,7 +13,7 @@
         ./packages
         ./scripts
       ];
-      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
+      systems = import inputs.systems;
       perSystem = {pkgs, ...}: {
         devShells.default = pkgs.mkShellNoCC {
           name = "dev";
