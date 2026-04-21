@@ -10,7 +10,7 @@
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./packages
+        (import ./packages {inherit inputs;})
         ./scripts
       ];
       systems = import inputs.systems;
